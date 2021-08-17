@@ -13,12 +13,12 @@ function TodoForm() {
 
     function handleAdd() {
         dispatch(AddTodo(text));
-        console.log("handleAdd: ", text);
+        setText("");
     }
 
     return (
         <div className="TodoForm">
-            <input type="text" placeholder="Input a new todo item" onChange={handleChange}/>
+            <input type="text" placeholder="Input a new todo item" onChange={handleChange} value={text}/>
             <button onClick={handleAdd}>Add</button>
         </div>
     );

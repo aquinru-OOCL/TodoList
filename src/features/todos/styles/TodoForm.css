@@ -1,11 +1,31 @@
 .TodoForm {
-    margin: 25px;
+    margin: 50px;
 }
 
 button {
     margin-left: 20px;
-    padding: 1px 20px;
-    font-size: 12px;
+    padding: 3px 20px;
     cursor: pointer;
     text-align: center;
+    font-family: monospace;
+    font-size: 12px;
+    background-color: #f6f6f6;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 2px #999;
+}
+
+button:hover {
+    background-color: #bbb
+}
+
+button:active {
+    background-color: #808080;
+}
+
+input {
+    text-align: left;
+    font-family: monospace;
+    font-size: 15px;
+    width: 28%;
 }

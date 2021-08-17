@@ -1,11 +1,12 @@
 import React from "react";
 import TodoGroup from "./TodoGroup";
 import TodoForm from "./TodoForm";
+import "../styles/TodoList.css";
 
 function TodoList() {
     return (
         <div>
-            <h3>TodoList</h3>
+            <h1>TodoList</h1>
             <TodoGroup />
             <TodoForm />
         </div>

@@ -7,7 +7,7 @@ const initialState = todoAdapter.getInitialState({
     entities: {
         1: {
             id: uuid(),
-            text: "todo example",
+            text: "This is the first todo item.",
             done: false,
         },
     },
@@ -25,10 +25,17 @@ const todoSlice = createSlice({
             });
             return state;
         },
+        ToggleTodo(state, action) {
+            const todo = state.entities[action.payload];
+            todo.done = !todo.done;
+        },
+        DeleteTodo(state, action) {
+            delete state.entities[action.payload];
+        },
     },
 });
 
-export const { AddTodo } = todoSlice.actions;
+export const { AddTodo, ToggleTodo, DeleteTodo } = todoSlice.actions;
 export const { selectIds: selectTodoIds, selectById: selectTodoById } =
     todoAdapter.getSelectors((state) => state.todoList);
 export default todoSlice.reducer;

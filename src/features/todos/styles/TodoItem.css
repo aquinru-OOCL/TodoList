@@ -1,0 +1,45 @@
+.TodoItem-todo.done {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-family: monospace;
+}
+
+ul li {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-align: left;
+    font-size: 18px;
+    display: block;
+    position: relative;
+}
+
+ul li:hover {
+    background-color: #eee;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 12px 16px;
+    transform: translate(0%, -50%);
+    opacity: 0.70;
+    font-style: normal;
+}
+
+.close:hover {
+    background-color: #bbb
+}
+
+.close:active {
+    background-color: #808080;
+}
