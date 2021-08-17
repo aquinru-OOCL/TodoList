@@ -1,0 +1,11 @@
+.TodoForm {
+    margin: 25px;
+}
+
+button {
+    margin-left: 20px;
+    padding: 1px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+}
