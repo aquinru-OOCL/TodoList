@@ -12,8 +12,10 @@ function TodoForm() {
     }
 
     function handleAdd() {
-        dispatch(AddTodo(text));
-        setText("");
+        if (text !== "") {
+            dispatch(AddTodo(text));
+            setText("");
+        }
     }
 
     return (
