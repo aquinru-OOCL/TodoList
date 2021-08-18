@@ -12,8 +12,9 @@ function TodoItem(props) {
         dispatch(ToggleTodo(props.itemId));
     }
 
-    function handleDelete() {
+    function handleDelete(event) {
         dispatch(DeleteTodo(props.itemId));
+        event.stopPropagation();
     }
 
     return (
