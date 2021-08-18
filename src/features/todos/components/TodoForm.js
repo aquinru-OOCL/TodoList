@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "../styles/TodoForm.css";
 import { AddTodo } from "../reducers/todoSlice";
 import { useDispatch } from "react-redux";
+import { createTodo } from "../apis/todos";
+import { Input, Button } from 'antd';
+import { FormOutlined } from '@ant-design/icons';
 
 function TodoForm() {
     const [text, setText] = useState("");
@@ -13,15 +16,17 @@ function TodoForm() {
 
     function handleAdd() {
         if (text !== "") {
-            dispatch(AddTodo(text));
-            setText("");
+            createTodo(text).then((response) => {
+                dispatch(AddTodo(response.data));
+                setText("");
+            });
         }
     }
 
     return (
         <div className="TodoForm">
-            <input type="text" placeholder="Input a new todo item" onChange={handleChange} value={text}/>
-            <button onClick={handleAdd}>Add</button>
+            <Input className="InputForm" placeholder="Input a new todo item" onChange={handleChange} value={text} prefix={<FormOutlined />}></Input>
+            <Button className="AddButton" type="primary" shape="round" onClick={handleAdd}>Add</Button>
         </div>
     );
 }
