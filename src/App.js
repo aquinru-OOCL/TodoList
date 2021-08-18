@@ -3,16 +3,21 @@ import './App.css';
 import TodoList from "./features/todos/components/TodoList";
 import DoneList from "./features/todos/components/DoneList";
 import NotFound from "./features/todos/components/NotFound";
+import { Tabs } from 'antd';
+import { SnippetsOutlined, CarryOutOutlined } from '@ant-design/icons';
 
 function App() {
+    const { TabPane } = Tabs;
+    const linkTodoPage = <Link to="/"><SnippetsOutlined />All items</Link>;
+    const linkDonePage = <Link to="/done"><CarryOutOutlined />Done items</Link>;
+
     return (
         <div className="App">
             <BrowserRouter>
-                <span>
-                    <Link to="/">go to todo list page</Link>
-                    <br></br>
-                    <Link to="/done">go to done list page</Link>
-                </span>
+                <Tabs defaultActiveKey="1" centered>
+                    <TabPane tab={linkTodoPage} key="1"></TabPane>
+                    <TabPane tab={linkDonePage} key="2"></TabPane>
+                </Tabs>
                 <Switch>
                     <Route exact path="/" component={TodoList}></Route>
                     <Route exact path="/done" component={DoneList}></Route>

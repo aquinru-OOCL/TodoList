@@ -7,7 +7,7 @@ function DoneList() {
     const doneList = useSelector(selectDoneList);
     return (
         <div>
-            <h1>Done List</h1>
+            <h2>Done List</h2>
             { 
                 doneList.map(todo => (
                     <TodoItem key={todo.id} todo={todo} />

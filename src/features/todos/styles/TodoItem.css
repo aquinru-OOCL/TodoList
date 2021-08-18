@@ -1,12 +1,13 @@
 .TodoItem-todo.done {
     text-decoration: line-through;
     font-style: italic;
+    color: #a1a0a0;
 }
 
 ul {
     list-style-type: none;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 25%;
+    margin-right: 25%;
     font-family: monospace;
 }
 
@@ -14,9 +15,9 @@ ul li {
     border: 1px solid #ddd;
     margin-top: -1px;
     background-color: #f6f6f6;
-    padding: 12px;
+    padding: 8px;
     text-align: left;
-    font-size: 18px;
+    font-size: 15px;
     display: block;
     position: relative;
 }
