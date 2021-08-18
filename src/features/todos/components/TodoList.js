@@ -13,7 +13,6 @@ function TodoList() {
 
     useEffect(() => {
         getTodos().then((response) => {
-            console.log("response.data:", response.data);
             dispatch(AddToDos(response.data));
         })
     }, [])
