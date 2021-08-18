@@ -11,7 +11,7 @@ function TodoItem(props) {
 
     function handleClick() {
         updateTodo(todoId, {done: !props.todo.done}).then((response) => {
-            dispatch(ToggleTodo({todoId, updateTodo:response.data}));
+            dispatch(ToggleTodo({id:todoId, updateTodo:response.data}));
         });
     }
 
