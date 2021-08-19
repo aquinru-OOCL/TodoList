@@ -12,7 +12,7 @@ import { AddToDos } from "./features/todos/reducers/todoSlice";
 
 function App() {
     const { TabPane } = Tabs;
-    const linkTodoPage = <Link to="/"><SnippetsOutlined />All items</Link>;
+    const linkTodoPage = <Link to="/" className="linkTodoPage"><SnippetsOutlined />All items</Link>;
     const linkDonePage = <Link to="/done"><CarryOutOutlined />Done items</Link>;
     const dispatch = useDispatch();
 

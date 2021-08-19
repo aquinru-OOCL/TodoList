@@ -3,6 +3,7 @@ import { useDispatch} from "react-redux";
 import { deleteTodo, updateTodo } from "../apis/todos";
 import { ToggleTodo, DeleteTodo} from "../reducers/todoSlice";
 import "../styles/TodoItem.css";
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 function TodoItem(props) {
     const dispatch = useDispatch();
@@ -26,7 +27,11 @@ function TodoItem(props) {
     return (
         <div className="TodoItem">
             <ul className={`TodoItem-todo ${todoStatus}`} onClick={handleClick}>
-                <li>{props.todo.text}<span className="close" onClick={handleDelete}>x</span></li>
+                <li>
+                    {props.todo.text}
+                    <DeleteOutlined className="close" onClick={handleDelete}></DeleteOutlined>
+                    <EditOutlined className="update" ></EditOutlined>
+                </li>
             </ul>
         </div>
         

@@ -20,6 +20,7 @@ ul li {
     font-size: 15px;
     display: block;
     position: relative;
+    cursor: pointer;
 }
 
 ul li:hover {
@@ -30,11 +31,15 @@ ul li:hover {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    right: 0%;
-    padding: 10px 15px;
+    right: 7%;
+    padding: 13px 18px;
     transform: translate(0%, -50%);
-    opacity: 0.70;
-    font-style: normal;
+    opacity: 0.80;
+    
+}
+
+.close.anticon {
+    color: #d11414;
 }
 
 .close:hover {
@@ -42,5 +47,28 @@ ul li:hover {
 }
 
 .close:active {
+    background-color: #808080;
+}
+
+.update {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 13px 18px;
+    transform: translate(0%, -50%);
+    opacity: 0.80;
+    
+}
+
+.update.anticon {
+    color: #5334df;
+}
+
+.update:hover {
+    background-color: #bbb
+}
+
+.update:active {
     background-color: #808080;
 }
