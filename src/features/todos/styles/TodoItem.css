@@ -31,8 +31,8 @@ ul li:hover {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    right: 7%;
-    padding: 13px 18px;
+    right: 0%;
+    padding: 13px 19px;
     transform: translate(0%, -50%);
     opacity: 0.80;
     
@@ -54,11 +54,10 @@ ul li:hover {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    right: 0%;
-    padding: 13px 18px;
+    right: -7%;
+    padding: 13px 19px;
     transform: translate(0%, -50%);
     opacity: 0.80;
-    
 }
 
 .update.anticon {
@@ -71,4 +70,8 @@ ul li:hover {
 
 .update:active {
     background-color: #5334dfb0;
+}
+
+.update.done {
+    visibility: hidden;
 }
