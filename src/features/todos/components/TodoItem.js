@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch} from "react-redux";
-import { deleteTodo, updateTodo } from "../apis/todos";
-import { ToggleTodo, DeleteTodo} from "../reducers/todoSlice";
+import { deleteTodo, updateTodo, updateTodoText } from "../apis/todos";
+import { ToggleTodo, DeleteTodo, UpdateText } from "../reducers/todoSlice";
 import "../styles/TodoItem.css";
-import { Modal } from 'antd';
+import { Modal, Input } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 function TodoItem(props) {
@@ -11,11 +11,15 @@ function TodoItem(props) {
     const todoStatus = props.todo.done ? "done" : "";
     const todoId = props.todo.id;
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const { TextArea } = Input;
 
+    
     function handleClick() {
-        updateTodo(todoId, {done: !props.todo.done}).then((response) => {
-            dispatch(ToggleTodo({id:todoId, updateTodo:response.data}));
-        });
+        if (!isModalVisible) {
+            updateTodo(todoId, {done: !props.todo.done}).then((response) => {
+                dispatch(ToggleTodo({id:todoId, updateTodo:response.data}));
+            });
+        }
     }
 
     function handleDelete(event) {
@@ -28,18 +32,24 @@ function TodoItem(props) {
 
     function showModal (event) {
         event.stopPropagation();
+        console.log(event.target);
         setIsModalVisible(true);
     };
     
     function handleOk (event) {
-        event.stopPropagation();
+        handleUpdateTodoText(event);
         setIsModalVisible(false);
     };
     
-    function handleCancel (event) {
-        event.stopPropagation();
+    function handleCancel () {
         setIsModalVisible(false);
     };
+
+    function handleUpdateTodoText(event) {
+        updateTodoText(todoId, {text: "static update test"}).then((response) => {
+            dispatch(UpdateText({id:todoId, updateTodoText:response.data}));
+        });
+    }
 
     return (
         <div className="TodoItem">
@@ -49,7 +59,11 @@ function TodoItem(props) {
                     <DeleteOutlined className="close" onClick={handleDelete}></DeleteOutlined>
                     <EditOutlined className={`update ${todoStatus}`} onClick={showModal}></EditOutlined>
                     <Modal title="Update this todo item" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width="40%">
-                        <span>{props.todo.text}</span>
+                        <TextArea
+                            defaultValue={props.todo.text}
+                            placeholder="Please input todo text"
+                            autoSize={{ minRows: 1, maxRows: 3 }}
+                        />
                     </Modal>
                 </li>
             </ul>

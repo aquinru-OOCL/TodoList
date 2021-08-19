@@ -25,10 +25,16 @@ const todoSlice = createSlice({
         AddToDos(state, action) {
             todoAdapter.addMany(state, action.payload);
         },
+        UpdateText(state, action) {
+            todoAdapter.updateOne(state, {
+                id: action.payload.id,
+                changes: action.payload.updateTodoText
+            })
+        }
     },
 });
 
-export const { AddTodo, ToggleTodo, DeleteTodo, AddToDos } = todoSlice.actions;
+export const { AddTodo, ToggleTodo, DeleteTodo, AddToDos, UpdateText } = todoSlice.actions;
 export const { selectAll: selectTodos, selectIds: selectTodoIds, selectById: selectTodoById } =
     todoAdapter.getSelectors((state) => state.todoList);
 export const selectDoneList = createSelector([selectTodos], (todos) => 
