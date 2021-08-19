@@ -18,8 +18,8 @@ function TodoItem(props) {
     function handleDelete(event) {
         event.stopPropagation();
         
-        deleteTodo(todoId).then((response) => {
-            dispatch(DeleteTodo(response.data));
+        deleteTodo(todoId).then(() => {
+            dispatch(DeleteTodo(todoId));
         });
     }
 
