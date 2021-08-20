@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch} from "react-redux";
 import { deleteTodo, updateTodo, updateTodoText } from "../apis/todos";
-import { ToggleTodo, DeleteTodo, UpdateText } from "../reducers/todoSlice";
+import { UpdateTodo, DeleteTodo } from "../reducers/todoSlice";
 import "../styles/TodoItem.css";
 import { Modal, Input } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
@@ -18,7 +18,7 @@ function TodoItem(props) {
     function handleClick() {
         if (!isModalVisible) {
             updateTodo(todoId, {done: !props.todo.done}).then((response) => {
-                dispatch(ToggleTodo({id:todoId, updateTodo:response.data}));
+                dispatch(UpdateTodo(response.data));
             });
         }
     }
@@ -40,7 +40,7 @@ function TodoItem(props) {
     function handleOk () {
         if(newText !== "") {
             updateTodoText(todoId, {text: newText}).then((response) => {
-                dispatch(UpdateText(response.data));
+                dispatch(UpdateTodo(response.data));
             });
         }
 
