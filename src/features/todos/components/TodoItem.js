@@ -12,6 +12,7 @@ function TodoItem(props) {
     const todoId = props.todo.id;
     const [isModalVisible, setIsModalVisible] = useState(false);
     const { TextArea } = Input;
+    const [newText, setNewText] = useState("");
 
     
     function handleClick() {
@@ -32,12 +33,17 @@ function TodoItem(props) {
 
     function showModal (event) {
         event.stopPropagation();
-        console.log(event.target);
+        setNewText(props.todo.text);
         setIsModalVisible(true);
     };
     
-    function handleOk (event) {
-        handleUpdateTodoText(event);
+    function handleOk () {
+        if(newText !== "") {
+            updateTodoText(todoId, {text: newText}).then((response) => {
+                dispatch(UpdateText(response.data));
+            });
+        }
+
         setIsModalVisible(false);
     };
     
@@ -45,10 +51,8 @@ function TodoItem(props) {
         setIsModalVisible(false);
     };
 
-    function handleUpdateTodoText(event) {
-        updateTodoText(todoId, {text: "static update test"}).then((response) => {
-            dispatch(UpdateText({id:todoId, updateTodoText:response.data}));
-        });
+    function handleChange(event) {
+        setNewText(event.target.value);
     }
 
     return (
@@ -60,9 +64,9 @@ function TodoItem(props) {
                     <EditOutlined className={`update ${todoStatus}`} onClick={showModal}></EditOutlined>
                     <Modal title="Update this todo item" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width="40%">
                         <TextArea
-                            defaultValue={props.todo.text}
                             placeholder="Please input todo text"
                             autoSize={{ minRows: 1, maxRows: 3 }}
+                            onChange={handleChange} value={newText}
                         />
                     </Modal>
                 </li>
